@@ -1,4 +1,4 @@
-# vue3-ulbi
+# [social-posts](https://zerovolk.github.io/social-posts/)
 
 ## Project setup
 ```
