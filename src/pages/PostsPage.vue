@@ -28,7 +28,7 @@
         v-if="!isPostLoading"
     />
     <div v-else>Идет загрузка...</div>
-    <div ref="observer" class="observer"></div>
+    <div v-intersection="loadMorePosts" class="observer"></div>
     <!--    <div class="page__wrapper">-->
     <!--      <div-->
     <!--          v-for="pageNumber in totalPages"-->
@@ -130,19 +130,19 @@ export default {
   mounted() {
     this.fetchPosts();
 
-    console.log(this.$refs.observer)
-    const options = {
-      rootMargin: '0px',
-      threshold: 1.0
-    }
-    const callback = (entries, observer) => {
-      /* Content excerpted, show below */
-      if (entries[0].isIntersecting && this.page < this.totalPages) {
-        this.loadMorePosts(this.$refs.observer)
-      }
-    };
-    const observer = new IntersectionObserver(callback, options);
-    observer.observe(this.$refs.observer);
+    // console.log(this.$refs.observer)
+    // const options = { // Этот код нужен для подгрузки постов как лента вк
+    //   rootMargin: '0px',
+    //   threshold: 1.0
+    // }
+    // const callback = (entries, observer) => {
+    //   /* Content excerpted, show below */
+    //   if (entries[0].isIntersecting && this.page < this.totalPages) {
+    //     this.loadMorePosts(this.$refs.observer)
+    //   }
+    // };
+    // const observer = new IntersectionObserver(callback, options);
+    // observer.observe(this.$refs.observer);
   },
   computed: {
     sortedPosts() {
